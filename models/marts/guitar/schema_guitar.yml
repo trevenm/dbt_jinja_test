@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: dim_artist
+    description: Combined list of artists that appear in the Billboard Top 100 data and the guitar tab data
+    meta: 
+      owner: 'Treven'
+    columns:
+      - name: artist
+        description: Primary key, name of the artist
+        tests:
+          - unique
+          - not_null
+          - accepted_values:              
+              values: ['The Beatles', 'Van Halen', 'The White Stripes']
+              config: 
+                severity: warn     
+
+  - name: dim_song
+    description: Combined list of songs that appear in the Billboard Top 100 data and the guitar tab data
+    meta: 
+      owner: 'Treven'
+    columns:
+      - name: song_title
+        description: Primary key, name of the song
+        tests:
+          - unique
+          - not_null
+     
+        
+
+        
+

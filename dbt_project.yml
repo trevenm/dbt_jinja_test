@@ -1,0 +1,35 @@
+
+
+name: 'dbt_jinja_test'
+version: '1.0.0'
+config-version: 2
+
+
+profile: 'dbt_jinja_test'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:        
+  - "target"
+  - "dbt_packages"
+
+seeds:
+  database: dbt_raw
+  schema: seeds
+  
+models:
+  dbt_jinja_test:
+    sample:
+      +database: dbt_raw
+      +schema: guitar
+    
+    marts:
+      guitar:
+        +database: dbt
+        +schema: guitar
+
