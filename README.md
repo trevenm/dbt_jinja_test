@@ -1,6 +1,6 @@
 Welcome to my project for experimentation and exploration!
 
-I have created a couple of elements to get some practice using jinja functionality.
+I have created a couple of elements to get some practice using specific dbt functionality.
 
 Data Sources:
     Billboard Top 100 
@@ -23,3 +23,9 @@ Models
             -Identify which song had the largest movement in chart places from its lowest point to its highest point in a period
             -Data is based on a "key_artist", which allows the date ranges to begin from the first week the key_artist was on the charts
             -A loop is created to look at a rolling 12 week period for 100 weeks
+    
+    dim_artist
+        Tests
+            -Deliberately added a silly test for accepted values to illustrate the severity property in the config
+
+
