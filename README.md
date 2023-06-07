@@ -1,15 +1,25 @@
-Welcome to your new dbt project!
+Welcome to my project for experimentation and exploration!
 
-### Using the starter project
+I have created a couple of elements to get some practice using jinja functionality.
 
-Try running the following commands:
-- dbt run
-- dbt test
+Data Sources:
+    Billboard Top 100 
+        - Every week, Billboard releases "The Hot 100" chart of songs that were trending on sales and airplay for that week. This dataset is a collection of all "The Hot 100" charts released since its inception in 1958.
+        -https://www.kaggle.com/datasets/dhruvildave/billboard-the-hot-100-songs
+    Top 850 Guitar Tabs 
+        - Description of a guitar tab instance from the list of the top rated guitar tabs.
+        -https://www.kaggle.com/datasets/thomaskonstantin/top-850-guitar-tabs
 
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+Macros
+    mighty
+        Purpose
+            -Simple macro to alter the band name "Van Halen"  to "The Mighty Van Halen".  
+            -Illustrates using a macro to facilitate a common transformation that can be pointed to many data sources with a similar need.
+
+Models
+    chart_movement
+        Purpose
+            -Identify which song had the largest movement in chart places from its lowest point to its highest point in a period
+            -Data is based on a "key_artist", which allows the date ranges to begin from the first week the key_artist was on the charts
+            -A loop is created to look at a rolling 12 week period for 100 weeks
