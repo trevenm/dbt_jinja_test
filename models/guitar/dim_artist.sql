@@ -1,12 +1,12 @@
 with billboard_artists as (
     select {{ mighty('artist') }} as artist     
-    from {{ ref('billboard')}}
+    from {{ ref('stg_billboard')}}
     group by artist
 ),
 
 tab_artists as (
     select {{ mighty('artist') }} as artist
-    from {{ ref('tabs') }}
+    from {{ ref('stg_tabs') }}
     group by artist
 ),
 

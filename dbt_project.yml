@@ -24,12 +24,15 @@ seeds:
   
 models:
   dbt_jinja_test:
-    sample:
+    stg:
       +database: dbt_raw
-      +schema: guitar
+      +schema: stage
     
-    marts:
-      guitar:
-        +database: dbt
-        +schema: guitar
+    guitar:
+      +database: dbt
+      +schema: guitar
+
+    heart_disease_ml:
+      +database: dbt
+      +schema: heart_disease
 

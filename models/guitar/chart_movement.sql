@@ -7,7 +7,7 @@
 
 {% set date_query -%}
     select min(billboard_date) as min_date        
-    from {{ref('billboard')}} 
+    from {{ref('stg_billboard')}} 
     where artist = '{{key_artist}}'
 {% endset -%}
 
@@ -28,7 +28,7 @@ with chart_activity as (
                 ,min(billboard_rank) as min_song_rank
                 ,max(billboard_rank) as max_song_rank
                 ,max(billboard_rank) - min(billboard_rank) as chart_movement                  
-            from {{ ref('billboard')}} 
+            from {{ ref('stg_billboard')}} 
             where billboard_date between DATEADD(d, 7 * {{loop.index}}, '{{loop_date}}') and DATEADD(week, 12,DATEADD(d, 7 * {{loop.index}}, '{{loop_date}}'))
             group by artist
                 ,song

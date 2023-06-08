@@ -1,12 +1,12 @@
 with billboard_songs as (
     select song as song_title
-    from {{ ref('billboard')}}
+    from {{ ref('stg_billboard')}}
     group by song
 ),
 
 tab_songs as (
     select song_name as song_title
-    from {{ ref('tabs') }}
+    from {{ ref('stg_tabs') }}
     
 ),
 
