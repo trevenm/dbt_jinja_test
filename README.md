@@ -45,7 +45,7 @@ I have created a couple of elements to get some practice using specific dbt func
 
 ## Python Models    
     train_test_target
-        - Train simple ML model to predict "Target" column in heart disease data set
+        - Train simple ML model to predict "target" field in heart disease data set
 
     predict_target
         - Use trained model to predict "target" field in prediction data set
