@@ -1,5 +1,5 @@
 {{ config(
-    materialized='table'
+    materialized='incremental'
     )
 }}
 
@@ -21,7 +21,8 @@ with chart_activity as (
     {% set loop_count = 100 -%} 
     {% for loop_iteration in range(1, loop_count + 1) -%}
         {% if loop.index <= loop_count -%}
-            select DATEADD(d, 7 * {{loop.index}}, '{{loop_date}}') as period_start
+            select '{{key_artist}}' as key_artist
+                ,DATEADD(d, 7 * {{loop.index}}, '{{loop_date}}') as period_start
                 ,DATEADD(week, 12,DATEADD(d, 7 * {{loop.index}}, '{{loop_date}}')) as period_end
                 ,artist
                 ,song
@@ -40,20 +41,26 @@ with chart_activity as (
 ),
 
 ranked_movers as (
-    select period_start
+    select key_artist
+        ,period_start
         ,period_end
         ,artist
         ,song
+        ,min_song_rank
+        ,max_song_rank
         ,chart_movement
         ,rank() over (partition by period_start order by chart_movement desc) as rnk
     from chart_activity
 ),
 
 top_mover as (
-    select period_start
+    select key_artist
+        ,period_start
         ,period_end
         ,artist
         ,song
+        ,min_song_rank
+        ,max_song_rank
         ,chart_movement
     from ranked_movers
     where rnk = 1

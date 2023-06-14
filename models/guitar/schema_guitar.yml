@@ -14,7 +14,7 @@ models:
           - accepted_values:              
               values: ['The Beatles', 'Van Halen', 'The White Stripes']
               config: 
-                severity: warn     
+                severity: warn   
 
   - name: dim_song
     description: Combined list of songs that appear in the Billboard Top 100 data and the guitar tab data
@@ -26,6 +26,21 @@ models:
         tests:
           - unique
           - not_null
+  
+  - name: chart_movement
+    description: Identify which song had the largest movement in chart places from its lowest point to its highest point in a period
+    columns:
+      - name: period_start
+        description: Start date of the 12 week evaluation period
+        tests:
+          - year_less_than_2022
+        
+      - name: artist
+        description: Artist name
+        tests:
+          - relationships:
+              to: ref('dim_artist')
+              field: artist
      
         
 
