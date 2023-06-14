@@ -26,6 +26,7 @@ models:
   dbt_project_evaluator:
     +database: dbt
     +schema: dbt_project_evaluator
+    
   dbt_jinja_test:
     stg:
       +database: dbt_raw
