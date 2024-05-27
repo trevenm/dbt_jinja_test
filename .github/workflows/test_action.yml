@@ -2,9 +2,7 @@ name: test_action
 
 on:
   schedule:
-    - cron: '0-59/5 * * * *'
-  push:
-    branches: [ main ]
+    - cron: '0/5 * * * *'
   workflow_dispatch:
 
 jobs:
