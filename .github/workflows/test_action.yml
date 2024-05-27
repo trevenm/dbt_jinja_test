@@ -1,6 +1,8 @@
 name: test_action
 
 on:
+  schedule:
+    - cron: '0-59/5 * * * *'
   push:
     branches: [ main ]
   workflow_dispatch:
